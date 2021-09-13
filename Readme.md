@@ -29,3 +29,9 @@ friendly to screen readers.
 Do unit tests if
 * Complex logic difficult to test via functional tests
 * Too many edge cases
+
+`fireEvent` works, but it's better to use `userEvent`, which is a separate
+dependency, to more realistically describe the user events.
+
+Screen query example
+![alt text](./screen_query.PNG)
