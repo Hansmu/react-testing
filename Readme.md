@@ -35,3 +35,6 @@ dependency, to more realistically describe the user events.
 
 Screen query example
 ![alt text](./screen_query.PNG)
+
+When you are waiting for something to appear asynchronously on the page, you
+must use `await` `findBy`.
