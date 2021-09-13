@@ -3,6 +3,7 @@ import axios from 'axios';
 import ScoopOption from "./ScoopOption";
 import {Row} from "react-bootstrap";
 import ToppingOption from "./ToppingOption";
+import AlertBanner from "../common/AlertBanner";
 
 interface IItem {
     name: string;
@@ -23,6 +24,10 @@ export default function Options({optionType}: IOptionsProps) {
             .then((response) => setItems(response.data))
             .catch((error) => setError(true));
     }, [optionType]);
+
+    if (error) {
+        return <AlertBanner />;
+    }
 
     const ItemComponent = optionType === 'scoops' ? ScoopOption : ToppingOption;
 
