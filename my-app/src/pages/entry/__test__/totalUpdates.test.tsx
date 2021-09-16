@@ -1,10 +1,10 @@
-import {render, screen} from "@testing-library/react";
+import {render, screen} from "../../../test-utils/testing-library-utils";
 import userEvent from "@testing-library/user-event";
 import Options from '../Options';
 import {OrderDetailsProvider} from "../../../contexts/OrderDetails";
 
 test('update scoop subtotal when scoops change', async () => {
-    render(<Options optionType={'scoops'} />, {wrapper: OrderDetailsProvider});
+    render(<Options optionType={'scoops'} />);
 
     // Could use regex as well, but this is another way of doing it. Additionally, not including the price in the
     // search as this element will be reused as the sum changes. So it's clearer to just get the text without the number.

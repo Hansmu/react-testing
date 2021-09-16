@@ -1,4 +1,4 @@
-import {render, screen, waitFor} from "@testing-library/react";
+import {render, screen, waitFor} from "../../../test-utils/testing-library-utils";
 import OrderEntry from "../OrderEntry";
 import {rest} from "msw";
 import {server} from "../../../mocks/server";
@@ -15,7 +15,7 @@ test('handles error for scoops and toppings routes', async () => {
         })
     );
 
-    render(<OrderEntry />, {wrapper: OrderDetailsProvider});
+    render(<OrderEntry />);
     // We have multiple requests resolving, so a simple await doesn't work, we need waitFor to make sure the test waits
     // until both of the requests have resolved.
     await waitFor(async () => {
