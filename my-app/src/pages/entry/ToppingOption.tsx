@@ -4,7 +4,7 @@ import {Col, Form} from "react-bootstrap";
 interface IToppingOptionProps {
     name: string;
     imagePath: string;
-    updateItemCount: (name: string, value: string | number) => void;
+    updateItemCount: (name: string, value: string) => void;
 }
 
 
@@ -20,7 +20,7 @@ export default function ToppingOption({name, imagePath, updateItemCount}: IToppi
                 <Form.Check
                     type="checkbox"
                     onChange={(e) => {
-                        updateItemCount(name, e.target.checked ? 1 : 0);
+                        updateItemCount(name, e.target.checked ? '1' : '0');
                     }}
                     label={name}
                 />
