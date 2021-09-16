@@ -45,12 +45,19 @@ test('update toppings subtotal when toppings change', async () => {
 });
 
 describe('grand total', () => {
-    test('grand total starts at $0.00', () => {
+    test('grand total starts at $0.00', async () => {
         render(<OrderEntry />);
         const grandTotal = screen.getByRole('heading', {
             name: /grand total: \$/i
         });
         expect(grandTotal).toHaveTextContent('0.00');
+
+        await screen.findByRole('spinbutton', {
+            name: 'Vanilla'
+        });
+        await screen.findByRole('checkbox', {
+            name: 'Cherries'
+        });
     });
 
     test('grand total updates properly if scoop is added first', async () => {
