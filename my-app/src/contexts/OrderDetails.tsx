@@ -12,7 +12,8 @@ const OrderDetails = createContext<[
         scoops: Map<any, any>,
     toppings: Map<any, any>
     },
-    ((itemName: string, newItemCount: string, optionType: ("scoops" | "toppings")) => void)
+    ((itemName: string, newItemCount: string, optionType: ("scoops" | "toppings")) => void),
+    () => void
 ] | null>(null);
 
 // create custom hook to check whether we're inside a provider
@@ -72,9 +73,16 @@ export function OrderDetailsProvider(props: any) {
             setOptionCounts(newOptionCounts);
         }
 
+        function resetOrder() {
+            setOptionCounts({
+                scoops: new Map(),
+                toppings: new Map(),
+            });
+        }
+
         // getter: object containing option counts for scoops and toppings, subtotals and totals
         // setter: updateOptionCount
-        return [{ ...optionCounts, totals }, updateItemCount];
+        return [{ ...optionCounts, totals }, updateItemCount, resetOrder];
     }, [optionCounts, totals]);
     return <OrderDetails.Provider value={value} {...props} />;
 }
