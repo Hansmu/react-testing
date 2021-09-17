@@ -15,7 +15,7 @@ test('handles error for scoops and toppings routes', async () => {
         })
     );
 
-    render(<OrderEntry />);
+    render(<OrderEntry setOrderPhase={jest.fn()} />);
     // We have multiple requests resolving, so a simple await doesn't work, we need waitFor to make sure the test waits
     // until both of the requests have resolved.
     await waitFor(async () => {

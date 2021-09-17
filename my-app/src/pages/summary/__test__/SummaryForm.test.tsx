@@ -3,7 +3,7 @@ import SummaryForm from "../SummaryForm";
 import userEvent from "@testing-library/user-event";
 
 test('Button disabled initially, checkbox unchecked initially', () => {
-    render(<SummaryForm />);
+    render(<SummaryForm setOrderPhase={jest.fn()}/>);
     const submitButton = screen.getByRole('button', {name: /confirm order/i});
     const termsCheckbox = screen.getByRole('checkbox', {name: /i agree to/i});
 
@@ -12,7 +12,7 @@ test('Button disabled initially, checkbox unchecked initially', () => {
 });
 
 test('Checkbox enables button on first click and disables on second click', () => {
-    render(<SummaryForm />);
+    render(<SummaryForm setOrderPhase={jest.fn()}/>);
     const submitButton = screen.getByRole('button', {name: /confirm order/i});
     const termsCheckbox = screen.getByRole('checkbox', {name: /i agree to/i});
 
@@ -30,7 +30,7 @@ test('Checkbox enables button on first click and disables on second click', () =
 test('Popover opens when hovering, but is hidden otherwise', async () => {
     const popoverText = /no ice cream will actually be delivered/i;
 
-    render(<SummaryForm />);
+    render(<SummaryForm setOrderPhase={jest.fn()}/>);
 
     // Null will be returned if the element doesn't exist on screen
     const missingPopover = screen.queryByText(popoverText);
